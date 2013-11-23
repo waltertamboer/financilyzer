@@ -162,7 +162,7 @@ class TransactionTest extends \PHPUnit_Framework_TestCase
         
         $transaction = new Transaction();
         $transaction->serialize($root);
-        $this->assertStringEqualsFile('assets/serialized/empty.xml', $dom->saveXML());
+        $this->assertStringEqualsFile('tests/assets/serialized/empty.xml', $dom->saveXML());
     }
 
     public function testSerializeFilled()
@@ -176,6 +176,6 @@ class TransactionTest extends \PHPUnit_Framework_TestCase
         $transaction->setName('name');
         $transaction->setDescription('description');
         $transaction->serialize($root);
-        $this->assertStringEqualsFile('assets/serialized/filled.xml', $dom->saveXML());
+        $this->assertStringEqualsFile('tests/assets/serialized/filled.xml', $dom->saveXML());
     }
 }
