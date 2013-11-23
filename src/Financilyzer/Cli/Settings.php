@@ -91,6 +91,9 @@ class Settings
     private function parseTransformer(DOMElement $parent)
     {
         $path = $parent->getAttribute('path');
+        if (!$path) {
+            throw new \RuntimeException('No xsl file has been provided.');
+        }
         if (!is_file($path)) {
             throw new \RuntimeException('Cannot find .xsl file "' . $path . '"');
         }
