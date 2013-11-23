@@ -3,7 +3,7 @@ Financilyzer
 A tool that analyzes financial transactions and categorizes them.
 
 ## Installing
-To install Financilyzer, run ```php composer.phar install```. This will download all needed 
+To install Financilyzer, run ```php composer.phar install --no-dev```. This will download all needed 
 dependencies that are needed for Financilyzer to run.
 
 If you would like to execute the unit tests, run ```php composer.phar install``` and it will 
