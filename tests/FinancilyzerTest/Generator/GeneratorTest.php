@@ -21,7 +21,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
         
         $this->assertEquals(
                 '<html xmlns:fn="http://www.w3.org/2005/xpath-functions">123</html>' . "\n", 
-                $generator->generate('assets/settings/financilyzer.xml'));
+                $generator->generate('tests/assets/settings/financilyzer.xml'));
     }
     
     public function testGenerateToFile()
@@ -29,10 +29,10 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
         $generator = new Generator();
         $this->assertFileNotExists('generated.xml');
         
-        $generator->generateToFile('assets/settings/financilyzer.xml', 'generated.xml');
+        $generator->generateToFile('tests/assets/settings/financilyzer.xml', 'generated.xml');
         $this->assertFileExists('generated.xml');
         
         $this->assertStringEqualsFile('generated.xml', 
-                $generator->generate('assets/settings/financilyzer.xml'));
+                $generator->generate('tests/assets/settings/financilyzer.xml'));
     }
 }
