@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <financilyzer>
-    <transformer path="assets/xsl/from.xsl" />
+    <transformer path="tests/assets/xsl/from.xsl" />
     <readers>
-        <ing-csv>assets/banks/ing.csv</ing-csv>
+        <ing-csv>tests/assets/banks/ing.csv</ing-csv>
     </readers>
     <accounts>
         <account number="680237828">John Doe</account>
