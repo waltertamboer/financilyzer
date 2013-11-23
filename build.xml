@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="ZF2" default="build">
+<project name="Financilyzer" default="build">
     <target name="travis" depends="run-tests,show-test-results" />
 
     <target name="clean" description="Cleanup build artifacts">
