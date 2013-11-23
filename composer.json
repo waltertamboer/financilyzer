@@ -3,6 +3,9 @@
         "php": ">=5.3.3",
         "symfony/console": "*"
     },
+    "require-dev": {
+		"phpunit/phpunit": "*"
+    },
     "autoload": {
         "psr-0": {
             "Financilyzer": "src/"
