@@ -1,6 +1,6 @@
 Financilyzer
 ============
-Master: [![Build Status](https://secure.travis-ci.org/WalterTamboer/financilyzer.png?branch=master)](http://travis-ci.org/WalterTamboer/financilyzer)
+Master: [![Build Status](https://travis-ci.org/WalterTamboer/financilyzer.png?branch=master)](https://travis-ci.org/WalterTamboer/financilyzer)
 
 A tool that analyzes financial transactions and categorizes them.
 
