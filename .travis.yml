@@ -5,6 +5,9 @@ php:
   - 5.3
   - 5.4
   - 5.5
-
+  
+before_script:
+  - chmod +x bin/check-cs.sh
+  
 script:
- - ant travis -keep-going
+  - ant travis -keep-going
