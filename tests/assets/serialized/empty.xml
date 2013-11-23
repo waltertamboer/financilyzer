@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<root>
+  <transaction>
+    <type></type>
+    <categories></categories>
+    <date/>
+    <from></from>
+    <to></to>
+    <amount></amount>
+    <name></name>
+    <description></description>
+  </transaction>
+</root>

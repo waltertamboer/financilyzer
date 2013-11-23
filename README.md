@@ -49,17 +49,28 @@ Example:
 ```
 
 ### &lt;analyzers /&gt;
-This is the most important element of the configuration file. A list with groups is defined here which 
-will be used as the rules of the parser. The following rules currently exist:&lt;group /&gt;, &lt;and /&gt;, &lt;or /&gt; and dynamic rules.
+This is the most important element of the configuration file. A list with categories is defined here which 
+will be used as the rules of the parser. The following rules currently exist:&lt;category /&gt;, &lt;and /&gt;, &lt;or /&gt; and dynamic rules.
 
 An example of how a rule might look:
 ```
-<group name="MyGroup">
+<category name="My Category">
   <from equals="123456" />
   <and>
     <to equals="654321" />
   </and>
-</group>
+</category>
 ```
 
-The above will be parsed and if the transaction matches the rules, the transaction will be categorized as "MyGroup".
+Another example showing a transaction from an account to multiple accounts:
+
+```
+<category name="My Second Category">
+  <from equals="123" />
+  <or>
+    <to equals="456" />
+    <to equals="789" />
+  </or>
+</category>
+
+The above will be parsed and if the transaction matches the rules, the transaction will be categorized as "My Category".

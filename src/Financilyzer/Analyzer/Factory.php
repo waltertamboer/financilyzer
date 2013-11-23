@@ -10,8 +10,8 @@ class Factory
     {
         $result = null;
 
-        if ($parent->nodeName == 'group') {
-            $result = self::groupFactory($parent);
+        if ($parent->nodeName == 'category') {
+            $result = self::categoryFactory($parent);
         } elseif ($parent->nodeName == 'and') {
             $result = self::andFactory($parent);
         } elseif ($parent->nodeName == 'or') {
@@ -44,9 +44,9 @@ class Factory
         return new OrElement();
     }
 
-    public static function groupFactory(DOMElement $node)
+    public static function categoryFactory(DOMElement $node)
     {
-        $result = new GroupElement();
+        $result = new CategoryElement();
 
         $result->setName($node->getAttribute('name'));
 

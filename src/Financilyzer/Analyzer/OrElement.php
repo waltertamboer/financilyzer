@@ -8,11 +8,14 @@ class OrElement extends AbstractElement
 {
     public function analyze(Transaction $transaction)
     {
-        $result = true;
-
+        $result = false;
+        
         // One of the child elements must match.
         foreach ($this->getElements() as $element) {
-            $result &= $element->analyze($transaction);
+            if ($element->analyze($transaction)) {
+                $result = true;
+                break;
+            }
         }
         
         return $result;

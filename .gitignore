@@ -1,4 +1,5 @@
 data
 nbproject
+tests/report
 vendor
 composer.lock

@@ -2,9 +2,7 @@
 
 namespace Financilyzer\Analyzer;
 
-use Financilyzer\Transaction\Transaction;
-
-class GroupElement extends AndElement
+class CategoryElement extends AndElement
 {
     private $name;
 
@@ -16,10 +14,5 @@ class GroupElement extends AndElement
     public function setName($name)
     {
         $this->name = $name;
-    }
-
-    public function analyze(Transaction $transaction)
-    {
-        return parent::analyze($transaction);
     }
 }

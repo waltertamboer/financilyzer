@@ -1,6 +1,6 @@
 <?php
 
-namespace Financilyzer\Cli;
+namespace Financilyzer\Generator;
 
 use DOMDocument;
 use DOMElement;
@@ -76,10 +76,6 @@ class Settings
         $node = $parent->firstChild;
         while ($node) {
             switch ($node->nodeName) {
-                case 'rabobank':
-                    $this->readers[] = new RabobankCsv($node->nodeValue);
-                    break;
-
                 case 'ing-csv':
                     $this->readers[] = new IngCsv($node->nodeValue);
                     break;
@@ -92,7 +88,7 @@ class Settings
     {
         $path = $parent->getAttribute('path');
         if (!$path) {
-            throw new \RuntimeException('No xsl file has been provided.');
+            throw new \RuntimeException('No XSL file has been provided.');
         }
         if (!is_file($path)) {
             throw new \RuntimeException('Cannot find .xsl file "' . $path . '"');

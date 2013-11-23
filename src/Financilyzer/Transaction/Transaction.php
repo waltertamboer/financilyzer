@@ -40,12 +40,17 @@ class Transaction
 
     private $date;
     private $type;
-    private $category;
+    private $categories;
     private $name;
     private $description;
     private $amount;
     private $from;
     private $to;
+    
+    public function __construct()
+    {
+        $this->categories = array();
+    }
 
     public function getDate()
     {
@@ -54,7 +59,11 @@ class Transaction
 
     public function setDate($date)
     {
-        $this->date = new DateTime($date);
+        if ($date instanceof DateTime) {
+            $this->date = $date;
+        } else {
+            $this->date = new DateTime($date);
+        }
         return $this;
     }
 
@@ -69,15 +78,15 @@ class Transaction
         return $this;
     }
 
-    public function getCategory()
+    public function addCategory($category)
     {
-        return $this->category;
+        $this->categories[] = $category;
+        return $this;
     }
 
-    public function setCategory($category)
+    public function getCategories()
     {
-        $this->category = $category;
-        return $this;
+        return $this->categories;
     }
 
     public function getAmount()
@@ -93,7 +102,7 @@ class Transaction
 
     public function getName()
     {
-        return $this->name;
+        return (string)$this->name;
     }
 
     public function setName($name)
@@ -104,7 +113,7 @@ class Transaction
 
     public function getDescription()
     {
-        return $this->description;
+        return (string)$this->description;
     }
 
     public function setDescription($description)
@@ -115,7 +124,7 @@ class Transaction
 
     public function getFrom()
     {
-        return $this->from;
+        return (string)$this->from;
     }
 
     public function setFrom($from)
@@ -126,7 +135,7 @@ class Transaction
 
     public function getTo()
     {
-        return $this->to;
+        return (string)$this->to;
     }
 
     public function setTo($to)
@@ -139,7 +148,9 @@ class Transaction
     {
         $hash = '';
 
-        $hash .= $this->getDate()->format('dmYHis');
+        if ($this->getDate()) {
+            $hash .= $this->getDate()->format('dmYHis');
+        }
         $hash .= $this->getName();
         $hash .= $this->getDescription();
 
@@ -157,12 +168,14 @@ class Transaction
         $element->appendChild($dom->createTextNode($this->getType()));
         $transactionElement->appendChild($element);
 
-        $element = $dom->createElement('category');
-        $element->appendChild($dom->createTextNode($this->getCategory()));
+        $element = $dom->createElement('categories');
+        $element->appendChild($dom->createTextNode(implode(', ', $this->getCategories())));
         $transactionElement->appendChild($element);
 
         $element = $dom->createElement('date');
-        $element->appendChild($dom->createTextNode($this->getDate()->format('r')));
+        if ($this->getDate()) {
+            $element->appendChild($dom->createTextNode($this->getDate()->format('r')));
+        }
         $transactionElement->appendChild($element);
 
         $element = $dom->createElement('from');

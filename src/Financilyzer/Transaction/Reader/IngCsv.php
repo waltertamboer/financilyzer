@@ -2,8 +2,8 @@
 
 namespace Financilyzer\Transaction\Reader;
 
-use Financilyzer\Transaction\Account;
 use Financilyzer\Transaction\Transaction;
+use RuntimeException;
 
 class IngCsv extends AbstractReader
 {
@@ -17,12 +17,10 @@ class IngCsv extends AbstractReader
 
         $this->transactions = array();
 
+		// Read the file into an array and strip off the descriptions:
         $lines = file($this->getPath());
-
-		// Strip of the descriptions:
 		array_shift($lines);
-
-		// Parse the transactions:
+        
 		foreach ($lines as $line) {
 			$this->parseTransaction($line);
 		}
@@ -33,7 +31,7 @@ class IngCsv extends AbstractReader
 		if (!preg_match_all('/"([^"]*)",?/i', $data, $matches)) {
 			throw new RuntimeException('Failed to parse the transaction: ' . $data);
 		}
-
+        
 		$transaction = new Transaction();
 		$transaction->setDate($matches[1][0]);
 		$transaction->setName(trim($matches[1][1]));
