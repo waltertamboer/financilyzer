@@ -4,7 +4,8 @@
         "symfony/console": "*"
     },
     "require-dev": {
-		"phpunit/phpunit": "*"
+		"phpunit/phpunit": "*",
+        "fabpot/php-cs-fixer": "*@dev"
     },
     "autoload": {
         "psr-0": {
