@@ -312,7 +312,7 @@ class Transaction
 
     /**
      * Serializes this transaction to the given DOM element.
-     * 
+     *
      * @param DOMElement $parent The DOM node to append the transaction to.
      */
     public function serialize(DOMElement $parent)
