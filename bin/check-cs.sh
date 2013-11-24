@@ -2,7 +2,7 @@
 
 FIXER_PATH="`dirname $0`/../vendor/fabpot/php-cs-fixer/php-cs-fixer"
 
-srcCS=$(php $FIXER_PATH fix -v --dry-run --level=psr2 ./library --fixers=unused_use)
+srcCS=$(php $FIXER_PATH fix -v --dry-run --level=psr2 ./src --fixers=unused_use)
 tstCS=$(php $FIXER_PATH fix -v --dry-run --level=psr2 ./tests)
 
 if [[ "$srcCS" || "$tstCS"  ]];
