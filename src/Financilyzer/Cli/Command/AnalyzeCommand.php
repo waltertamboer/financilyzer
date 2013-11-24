@@ -20,9 +20,9 @@ class AnalyzeCommand extends AbstractCommand
     {
         $inputPath = $input->getArgument('input');
         $outputPath = $input->getArgument('output');
-        
+
         $generator = new Generator();
-        
+
         if ($outputPath) {
             $generator->generateToFile($inputPath, $outputPath);
         } else {

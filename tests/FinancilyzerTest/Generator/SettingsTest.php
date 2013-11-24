@@ -13,7 +13,7 @@ class SettingsTest extends \PHPUnit_Framework_TestCase
     {
         new Settings();
     }
-    
+
     /**
      * @expectedException PHPUnit_Framework_Error_Warning
      */
@@ -21,7 +21,7 @@ class SettingsTest extends \PHPUnit_Framework_TestCase
     {
         new Settings('');
     }
-    
+
     /**
      * @expectedException PHPUnit_Framework_Error_Warning
      */
@@ -29,7 +29,7 @@ class SettingsTest extends \PHPUnit_Framework_TestCase
     {
         new Settings('path');
     }
-    
+
     /**
      * @expectedException RuntimeException
      */
@@ -37,7 +37,7 @@ class SettingsTest extends \PHPUnit_Framework_TestCase
     {
         new Settings('tests/assets/settings/financilyzer-empty.xml');
     }
-    
+
     /**
      * @expectedException RuntimeException
      */
@@ -45,12 +45,12 @@ class SettingsTest extends \PHPUnit_Framework_TestCase
     {
         new Settings('tests/assets/settings/financilyzer-invalid-xsl.xml');
     }
-    
+
     public function testConstructorWithPath()
     {
         new Settings('tests/assets/settings/financilyzer.xml');
     }
-    
+
     public function testGetAccounts()
     {
         $settings = new Settings('tests/assets/settings/financilyzer.xml');
@@ -73,7 +73,7 @@ class SettingsTest extends \PHPUnit_Framework_TestCase
     {
         $settings = new Settings('tests/assets/settings/financilyzer.xml');
         $readers = $settings->getReaders();
-        
+
         $this->assertCount(1, $readers);
         $this->assertSame('tests/assets/banks/ing.csv', $readers[0]->getPath());
     }

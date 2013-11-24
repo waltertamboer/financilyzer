@@ -17,25 +17,25 @@ class IngCsv extends AbstractReader
 
         $this->transactions = array();
 
-		// Read the file into an array and strip off the descriptions:
+        // Read the file into an array and strip off the descriptions:
         $lines = file($this->getPath());
-		array_shift($lines);
-        
-		foreach ($lines as $line) {
-			$this->parseTransaction($line);
-		}
+        array_shift($lines);
+
+        foreach ($lines as $line) {
+            $this->parseTransaction($line);
+        }
     }
 
-	private function parseTransaction($data)
-	{
-		if (!preg_match_all('/"([^"]*)",?/i', $data, $matches)) {
-			throw new RuntimeException('Failed to parse the transaction: ' . $data);
-		}
-        
-		$transaction = new Transaction();
-		$transaction->setDate($matches[1][0]);
-		$transaction->setName(trim($matches[1][1]));
-		$transaction->setDescription(trim($matches[1][8]));
+    private function parseTransaction($data)
+    {
+        if (!preg_match_all('/"([^"]*)",?/i', $data, $matches)) {
+            throw new RuntimeException('Failed to parse the transaction: ' . $data);
+        }
+
+        $transaction = new Transaction();
+        $transaction->setDate($matches[1][0]);
+        $transaction->setName(trim($matches[1][1]));
+        $transaction->setDescription(trim($matches[1][8]));
 
         /*
          * ING CODES:
@@ -111,7 +111,7 @@ class IngCsv extends AbstractReader
         $sender = trim($matches[1][2]);
         $receiver = trim($matches[1][3]);
 
-		$amount = (float)str_replace(',', '.', $matches[1][6]);
+        $amount = (float)str_replace(',', '.', $matches[1][6]);
         if (strtolower($matches[1][5]) == 'af') {
             $transaction->setAmount(-$amount);
 
@@ -133,12 +133,13 @@ class IngCsv extends AbstractReader
             }
         }
 
-		$this->transactions[] = $transaction;
-	}
+        $this->transactions[] = $transaction;
+    }
 
     public function getTransactions()
     {
         $this->load();
         return $this->transactions;
     }
+
 }

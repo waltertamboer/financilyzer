@@ -46,7 +46,7 @@ class Transaction
     private $amount;
     private $from;
     private $to;
-    
+
     public function __construct()
     {
         $this->categories = array();

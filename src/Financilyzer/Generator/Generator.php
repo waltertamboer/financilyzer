@@ -27,11 +27,11 @@ class Generator
 
         return $this->outputReport($settings, $outputDom);
     }
-    
+
     public function generateToFile($inputFile, $outputFile)
     {
         $data = $this->generate($inputFile);
-        
+
         file_put_contents($outputFile, $data);
     }
 
