@@ -34,17 +34,17 @@ class Factory
         return $result;
     }
 
-    public static function andFactory(DOMElement $node)
+    private static function andFactory(DOMElement $node)
     {
         return new AndElement();
     }
 
-    public static function orFactory(DOMElement $node)
+    private static function orFactory(DOMElement $node)
     {
         return new OrElement();
     }
 
-    public static function categoryFactory(DOMElement $node)
+    private static function categoryFactory(DOMElement $node)
     {
         $result = new CategoryElement();
 
@@ -53,7 +53,7 @@ class Factory
         return $result;
     }
 
-    public static function elementFactory(DOMElement $node)
+    private static function elementFactory(DOMElement $node)
     {
         $result = new AnalyzerElement();
 

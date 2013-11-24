@@ -12,9 +12,7 @@ if (class_exists('PHPUnit_Runner_Version', true)) {
 }
 
 $codeCoverageFilter = new PHP_CodeCoverage_Filter();
-$codeCoverageFilter->addDirectoryToWhitelist(__DIR__ . '/../src');
-$codeCoverageFilter->addDirectoryToBlacklist(__DIR__, '');
-$codeCoverageFilter->addDirectoryToBlacklist(__DIR__ . '/../vendor', '');
+$codeCoverageFilter->addDirectoryToBlacklist(__DIR__ . '/../src', '');
 $codeCoverageFilter->addDirectoryToBlacklist(PEAR_INSTALL_DIR, '');
 $codeCoverageFilter->addDirectoryToBlacklist(PHP_LIBDIR, '');
 unset($codeCoverageFilter);

@@ -46,6 +46,9 @@ class AnalyzerElement extends AndElement
     public function analyze(Transaction $transaction)
     {
         $getter = 'get' . ucfirst($this->name);
+        if (!method_exists($transaction, $getter)) {
+            throw new \RuntimeException('Invalid method requested: "' . $getter . '"');
+        }
         $value = call_user_func(array($transaction, $getter));
 
         switch ($this->compareMode) {
@@ -54,7 +57,7 @@ class AnalyzerElement extends AndElement
                 break;
 
             case self::COMPARE_MATCHES:
-                $result = preg_match($this->value, $value);
+                $result = preg_match($this->value, $value) === 1;
                 break;
 
             default:
