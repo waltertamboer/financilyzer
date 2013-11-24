@@ -7,7 +7,6 @@ use DOMElement;
 use Financilyzer\Analyzer\Factory;
 use Financilyzer\Transaction\Account;
 use Financilyzer\Transaction\Reader\IngCsv;
-use Financilyzer\Transaction\Reader\RabobankCsv;
 use XSLTProcessor;
 
 class Settings
@@ -93,7 +92,7 @@ class Settings
         if (!is_file($path)) {
             throw new \RuntimeException('Cannot find .xsl file "' . $path . '"');
         }
-        
+
         $xsl = new DOMDocument();
         $xsl->load($path);
 
