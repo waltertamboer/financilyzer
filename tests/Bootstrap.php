@@ -1,4 +1,12 @@
 <?php
+/**
+ * This file is part of Financilyzer, a tool written to categorize financial transactions.
+ *
+ * @author Walter Tamboer
+ * @copyright (c) 2013, Walter Tamboer
+ * @link https://github.com/WalterTamboer/financilyzer for the canonical source repository
+ */
+
 // Financilyzer needs to function with all errors enabled:
 error_reporting(E_ALL | E_STRICT);
 
