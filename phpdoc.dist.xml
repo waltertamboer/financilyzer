@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdoc>
+    <parser>
+        <target>docs/api</target>
+        <markers>
+            <item>TODO</item>
+            <item>FIXME</item>
+            <item>HACK</item>
+        </markers>
+    </parser>
+    <transformer>
+        <target>docs/api</target>
+        <template name="responsive" />
+    </transformer>
+    <files>
+        <directory>src</directory>
+    </files>
+</phpdoc>

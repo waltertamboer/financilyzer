@@ -14,8 +14,16 @@ use RuntimeException;
 
 class IngCsv extends AbstractReader
 {
+    /**
+     * A list with all loaded transactions.
+     *
+     * @var Transaction[]
+     */
     private $transactions;
 
+    /**
+     * Loads the transactions in the file.
+     */
     private function load()
     {
         if ($this->transactions) {
@@ -33,6 +41,12 @@ class IngCsv extends AbstractReader
         }
     }
 
+    /**
+     * Parses a single transaction.
+     *
+     * @param string $data The line of data to parse.
+     * @throws RuntimeException
+     */
     private function parseTransaction($data)
     {
         if (!preg_match_all('/"([^"]*)",?/i', $data, $matches)) {
@@ -112,7 +126,7 @@ class IngCsv extends AbstractReader
                 break;
 
             default:
-                throw new \RuntimeException('Unsupported transaction type: ' . trim($matches[1][4]));
+                throw new RuntimeException('Unsupported transaction type: ' . trim($matches[1][4]));
         }
 
         $sender = trim($matches[1][2]);
@@ -143,10 +157,14 @@ class IngCsv extends AbstractReader
         $this->transactions[] = $transaction;
     }
 
+    /**
+     * Gets a list with Transaction objects that are stored in the file.
+     *
+     * @return Transaction[]
+     */
     public function getTransactions()
     {
         $this->load();
         return $this->transactions;
     }
-
 }

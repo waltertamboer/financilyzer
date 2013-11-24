@@ -5,6 +5,7 @@
     },
     "require-dev": {
 		"phpunit/phpunit": "*",
+        "phpdocumentor/phpdocumentor": "*",
         "fabpot/php-cs-fixer": "*@dev"
     },
     "autoload": {
